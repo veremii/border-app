@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Tabs :tabs="tabs">
+
+    </Tabs>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Tabs from './components/Controls/Tabs';
+
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    Tabs
+  },
+  data(){
+    return {
+      tabs: [
+        {
+          name: 'Activities',
+          id: 'activities',
+          module: ()=> import('./components/Modules/ActivityPage')
+        },
+        {
+          name: 'My list',
+          id: 'mylist',
+          module: ()=> import('./components/Modules/ListPage')
+        }
+      ]
+    }
+  },
 }
 </script>
 
-<style>
+<style lang="less">
+
 #app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
