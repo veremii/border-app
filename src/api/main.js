@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://www.boredapi.com/api/'
+    baseURL: 'https://www.boredapi.com/api/'
 });
 
 export default {
