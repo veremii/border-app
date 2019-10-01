@@ -1,29 +1,32 @@
 <template>
-    <div v-if="Object.keys(options.header).length > 0" class="table">
-        <div ref="header" class="table-head">
+    <div class="table-container">
+        <div v-if="Object.keys(options.header).length > 0" class="table">
+            <div ref="header" class="table-head">
                 <div :key="header" v-for="header in Object.keys(options.header)" style="'width: 100%" class="header-cell">{{header}}</div>
                 <div v-if="options.deletableRows === true" style="width: 100%" class="header-cell"></div>
 
 
-        </div>
-        <div v-if="data.length > 0" class="table-body">
-            <transition-group name="list-complete" tag="div">
-                <div :key="row.key"  class="table-row list-complete-item" v-for="row in data">
-                    <div v-html="row.key"  :style="'width:' + columnsConfig[0].width + 'px'" class="table-cell">
+            </div>
+            <div v-if="data.length > 0" class="table-body">
+                <transition-group name="list-complete" tag="div">
+                    <div :key="row.key"  class="table-row list-complete-item" v-for="row in data">
+                        <div v-html="row.key"  :style="'width:' + columnsConfig[0].width + 'px'" class="table-cell">
+                        </div>
+                        <div v-html="row.activity"  :style="'width:' + columnsConfig[1].width + 'px'" class="table-cell">
+                        </div>
+                        <div v-html="row.participants"  :style="'width:' + columnsConfig[2].width + 'px'" class="table-cell">
+                        </div>
+                        <div v-html="row.price" :style="'width:' + columnsConfig[3].width + 'px'" class="table-cell">
+                        </div>
+                        <div v-if="options.deletableRows === true" :style="'width:' + columnsConfig[3].width + 'px'" class="table-cell">
+                            <i @click="$emit('removeRow', row.key)">✖</i>
+                        </div>
                     </div>
-                    <div v-html="row.activity"  :style="'width:' + columnsConfig[1].width + 'px'" class="table-cell">
-                    </div>
-                    <div v-html="row.participants"  :style="'width:' + columnsConfig[2].width + 'px'" class="table-cell">
-                    </div>
-                    <div v-html="row.price" :style="'width:' + columnsConfig[3].width + 'px'" class="table-cell">
-                    </div>
-                    <div v-if="options.deletableRows === true" :style="'width:' + columnsConfig[3].width + 'px'" class="table-cell">
-                        <i @click="$emit('removeRow', row.key)">✖</i>
-                    </div>
-                </div>
-            </transition-group>
+                </transition-group>
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -92,6 +95,13 @@
         justify-content: space-between;
         align-items: center;
     }
+    .table {
+        min-width: 600px;
+        position: relative;
+        &-container {
+            overflow-x: scroll;
+        }
+    }
     .table-row {
         padding-top: 10px;
         padding-bottom:10px;
@@ -120,6 +130,9 @@
         & .table-cell:first-child {
             padding-left: 20px;
             text-align: left;
+            position: sticky;
+            left: 0;
+            background-color: white;
         }
         & .table-cell:last-child {
             padding-right: 20px;
@@ -141,6 +154,9 @@
         & .header-cell:first-child {
             padding-left: 20px;
             text-align: left;
+            position: sticky;
+            left: 0;
+            background-color: #f7f7f7;
         }
         & .header-cell:last-child {
             padding-right: 20px;
