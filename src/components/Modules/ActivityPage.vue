@@ -87,6 +87,7 @@
 </script>
 
 <style lang="less" scoped>
+    @import '../../less/Variables';
     .buttons {
         width: 90%
 
@@ -99,11 +100,17 @@
     }
     .container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        @media @tablet {
+            flex-direction: row;
+        }
     }
 
     .description {
-        width: 60%;
+        width: 100%;
+        @media @tablet {
+            width: 60%;
+        }
         padding-right: 20px;
         display: flex;
         flex-direction: column;
@@ -111,7 +118,10 @@
 
     }
     .details {
-        width: 40%;
+        width: 100%;
+        @media @tablet {
+            width: 40%;
+        }
         display: flex;
         flex-direction: column;
         .items {
