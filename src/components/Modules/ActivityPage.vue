@@ -101,14 +101,14 @@
     .container {
         display: flex;
         flex-direction: column;
-        @media @tablet {
+        @media @tablet, @desktop {
             flex-direction: row;
         }
     }
 
     .description {
         width: 100%;
-        @media @tablet {
+        @media @tablet, @desktop {
             width: 60%;
         }
         padding-right: 20px;
@@ -119,7 +119,7 @@
     }
     .details {
         width: 100%;
-        @media @tablet {
+        @media @tablet, @desktop {
             width: 40%;
         }
         display: flex;
