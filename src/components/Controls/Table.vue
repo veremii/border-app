@@ -1,14 +1,14 @@
 <template>
     <div v-if="Object.keys(options.header).length > 0" class="table">
         <div ref="header" class="table-head">
-                <div v-for="header in Object.keys(options.header)" style="'width: 100%" class="header-cell">{{header}}</div>
+                <div :key="header" v-for="header in Object.keys(options.header)" style="'width: 100%" class="header-cell">{{header}}</div>
                 <div v-if="options.deletableRows === true" style="width: 100%" class="header-cell"></div>
 
 
         </div>
-        <div class="table-body">
+        <div v-if="data.length > 0" class="table-body">
             <transition-group name="list-complete" tag="div">
-                <div :key="row.key" v-if="data.length > 0" class="table-row list-complete-item" v-for="row in data">
+                <div :key="row.key"  class="table-row list-complete-item" v-for="row in data">
                     <div v-html="row.key"  :style="'width:' + columnsConfig[0].width + 'px'" class="table-cell">
                     </div>
                     <div v-html="row.activity"  :style="'width:' + columnsConfig[1].width + 'px'" class="table-cell">
@@ -63,7 +63,7 @@
                     return
                 }
                 let headers = this.$refs.header.childNodes;
-                Array.prototype.forEach.call(headers, (item, index, arr) => {
+                Array.prototype.forEach.call(headers, (item, index) => {
                     if(!this.columnsConfig[index]) this.columnsConfig[index]  = {};
                     this.columnsConfig[index].width = item.offsetWidth})
             }

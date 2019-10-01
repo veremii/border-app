@@ -4,7 +4,7 @@
             {{title}}
         </label>
         <select @input="emitSelectedValue">
-            <option v-for="option in options" :selected="option === value"  :value="option">
+            <option :key="option" v-for="option in options" :selected="option === value"  :value="option">
                 {{option}}
             </option>
         </select>

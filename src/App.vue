@@ -35,7 +35,11 @@ export default {
 </script>
 
 <style lang="less">
+  body {
 
+    color: #34495e;
+    padding-top: 50px;
+  }
 #app {
   display: flex;
   justify-content: center;

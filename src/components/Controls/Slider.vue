@@ -5,7 +5,7 @@
         </label>
         <input type="range" min="0" step="0.01" max="1" :value="value">
         <div class="pips">
-            <div class="pip" v-for="pip in pips">{{pip}}</div>
+            <div class="pip" :key="pip" v-for="pip in pips">{{pip}}</div>
         </div>
     </div>
 
@@ -55,13 +55,6 @@
         color: #979797;
         font-weight: bold;
     }
-    body {
-        font-family: "Dosis", Helvetica, Arial, sans-serif;
-        background: #ecf0f1;
-        color: #34495e;
-        padding-top: 50px;
-        text-shadow: white 1px 1px 1px;
-    }
     .pips {
         display: flex;
         justify-content: space-between;
@@ -78,22 +71,23 @@
         border-radius: 5px;
         margin: 0 auto;
         outline: 0;
+        &::-webkit-slider-thumb{
+            -webkit-appearance: none;
+            background-color: #e74c3c;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+            &:hover {
+                background-color: white;
+                border: 2px solid #e74c3c;
+            }
+            &:active {
+                transform: scale(1.2);
+            }
+        }
     }
-    input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        background-color: #e74c3c;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        border: 2px solid white;
-        cursor: pointer;
-        transition: .3s ease-in-out;
-    }​
-     input[type="range"]::-webkit-slider-thumb:hover {
-         background-color: white;
-         border: 2px solid #e74c3c;
-     }
-    input[type="range"]::-webkit-slider-thumb:active {
-        transform: scale(1.2);
-    }
+
 </style>
