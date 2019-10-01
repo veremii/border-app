@@ -81,12 +81,6 @@
             },
             saveActivity(){
                 localStorage.setItem('row' + this.formData.key, JSON.stringify(this.formData))
-            },
-            stub (){
-                this.api.GetRandomActivity().then(data => {
-                    console.log(data)
-                })
-
             }
         }
     }

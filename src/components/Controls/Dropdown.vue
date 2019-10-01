@@ -29,7 +29,6 @@
         },
         methods: {
             emitSelectedValue(event){
-                console.log(event)
                 this.$emit('input', event.target.value)
             }
         }

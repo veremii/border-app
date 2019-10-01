@@ -43,7 +43,6 @@
         },
         methods: {
             selectTab(tab){
-                console.log(this.selectedTab.component);
                 if (!tab){
                     this.selectedTab = this.tabs[0]
                 } else {
@@ -54,7 +53,6 @@
                     }
 
                 }
-                console.log(this.selectedTab);
             }
         }
     }
